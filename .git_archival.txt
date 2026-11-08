@@ -1,0 +1,4 @@
+node: 76516f12e58da23fe0918f3920f6a7df1cf9ba88
+node-date: 2026-11-08T07:08:59-06:00
+describe-name: v6.0b02-6823-g76516f12e58
+ref-names: HEAD -> main

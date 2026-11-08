@@ -1,0 +1,14 @@
+/**
+ * Modified by Kartikay Srivastava on 2026-11-08.
+ * \mainpage Kartikay Imaging Toolkit
+ * \image html kartikay-banner.svg width=80%
+ * \section intro Introduction
+ * A project led and maintained by Kartikay Srivastava for scientific image
+ * processing, segmentation, and registration in two or more dimensions.
+ * This independently branded distribution is derived from ITK; original
+ * development is acknowledged in CONTRIBUTORS.md at the source root.
+ * \section howto Using this reference
+ * The Modules view groups classes by functionality. Related Pages describe
+ * pipelines, iterators, and algorithms. The itk namespace and ITK build
+ * identifiers remain compatible with the base toolkit.
+ */

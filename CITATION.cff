@@ -1,0 +1,10 @@
+# Modified by Kartikay Srivastava on 2026-11-08.
+cff-version: 1.2.0
+message: "Cite this independently branded distribution and acknowledge the upstream software using CONTRIBUTORS.md and Contributors/Upstream/CITATION.cff."
+title: "Kartikay Imaging Toolkit"
+abstract: "Kartikay Srivastava's independently branded distribution for scientific image processing, segmentation, and registration, derived from ITK."
+type: software
+license: Apache-2.0
+authors:
+  - given-names: Kartikay
+    family-names: Srivastava

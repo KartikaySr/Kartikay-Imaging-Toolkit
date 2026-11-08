@@ -1,0 +1,555 @@
+{
+  "creators": [
+    {
+      "name": "Srivastava, Kartikay"
+    }
+  ],
+  "keywords": [
+    "itk",
+    "insight-toolkit",
+    "c-plus-plus",
+    "python",
+    "image-analysis",
+    "medical-imaging",
+    "scientific-computing",
+    "open-science",
+    "open-source",
+    "reproducible-research"
+  ],
+  "license": "Apache-2.0",
+  "upload_type": "software",
+  "contributors": [
+    {
+      "affiliation": "Google Inc, Kitware Inc, University of North Carolina at Chapel Hill, Université de Rennes 1, Universidad Industrial de Santander",
+      "name": "Ibanez, Luis",
+      "orcid": "0000-0003-2712-8584",
+      "type": "Other"
+    },
+    {
+      "affiliation": "GE Research",
+      "name": "Lorensen, Bill",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc",
+      "name": "McCormick, Matthew",
+      "orcid": "0000-0001-9475-3756",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc",
+      "name": "King, Brad",
+      "type": "Other"
+    },
+    {
+      "affiliation": "University of Iowa",
+      "name": "Johnson, Hans",
+      "orcid": "0000-0001-9513-2660",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Mayo Clinic, Mayo Clinic Graduate School for Biomedical Sciences",
+      "name": "Blezek, Daniel",
+      "orcid": "0000-0002-6498-6273",
+      "type": "Other"
+    },
+    {
+      "name": "Lowekamp, Bradley",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware SAS, Kitware Inc",
+      "name": "Jomier, Julien",
+      "orcid": "0000-0002-9020-3770",
+      "type": "Other"
+    },
+    {
+      "name": "Miller, Jim",
+      "type": "Other"
+    },
+    {
+      "name": "Lehmann, Gaëtan",
+      "type": "Other"
+    },
+    {
+      "name": "Cates, Josh",
+      "type": "Other"
+    },
+    {
+      "name": "Dekker, Niels",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Université de Sherbrooke",
+      "name": "Legarreta, Jon Haitz",
+      "orcid": "0000-0002-9661-1396",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc, University of Siegen",
+      "name": "Zukić, Dženan",
+      "orcid": "0000-0002-9546-9703",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Allen Institute for Brain Science",
+      "name": "Ng, Lydia",
+      "orcid": "0000-0002-7499-3514",
+      "type": "Other"
+    },
+    {
+      "name": "Kim, Jisung",
+      "type": "Other"
+    },
+    {
+      "name": "Gelas, Arnaud",
+      "type": "Other"
+    },
+    {
+      "name": "Malaterre, Mathieu",
+      "type": "Other"
+    },
+    {
+      "name": "Krishnan, Karthik",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc",
+      "name": "Hoffman, Bill",
+      "type": "Other"
+    },
+    {
+      "affiliation": "University of Iowa",
+      "name": "Williams, Kent",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc",
+      "name": "R. Aylward, Stephen",
+      "orcid": "0000-0002-7862-8856",
+      "type": "Other"
+    },
+    {
+      "name": "Budin, Francois",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc",
+      "name": "Schroeder, Will",
+      "type": "Other"
+    },
+    {
+      "name": "Liu, Xiaoxiao",
+      "type": "Other"
+    },
+    {
+      "affiliation": "University of Pennsylvania",
+      "name": "Avants, Brian",
+      "orcid": "0000-0002-4212-3362",
+      "type": "Other"
+    },
+    {
+      "name": "McBride, Sean",
+      "type": "Other"
+    },
+    {
+      "name": "Noe, Aljaz",
+      "type": "Other"
+    },
+    {
+      "name": "Popoff, Michka",
+      "type": "Other"
+    },
+    {
+      "name": "Hart, Gabe",
+      "type": "Other"
+    },
+    {
+      "name": "Sundaram, Tessa",
+      "type": "Other"
+    },
+    {
+      "name": "Gouaillard, Alexandre",
+      "type": "Other"
+    },
+    {
+      "name": "Stauffer, Michael",
+      "type": "Other"
+    },
+    {
+      "affiliation": "University of California Irvine, University of Virginia, Washington University in Saint Louis, Brigham Young University",
+      "name": "Tustison, Nick",
+      "orcid": "0000-0001-9418-5103",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc",
+      "name": "Enquobahrie, Andinet",
+      "type": "Other"
+    },
+    {
+      "name": "Pathak, Sayan",
+      "type": "Other"
+    },
+    {
+      "name": "Cedilnik, Andy",
+      "type": "Other"
+    },
+    {
+      "name": "Chen, Ting",
+      "type": "Other"
+    },
+    {
+      "name": "Shelton, Damion",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc",
+      "name": "Helba, Brian",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc",
+      "name": "Quammen, Cory",
+      "type": "Other"
+    },
+    {
+      "name": "Hernandez-Cerdan, Pablo",
+      "orcid": "0000-0002-1689-3451",
+      "type": "Other"
+    },
+    {
+      "name": "Jin, Yinpeng",
+      "type": "Other"
+    },
+    {
+      "name": "Padfield, Dirk",
+      "type": "Other"
+    },
+    {
+      "name": "Vercauteren, Tom",
+      "type": "Other"
+    },
+    {
+      "name": "Jae Kang, Hyun",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc",
+      "name": "Turek, Matt",
+      "type": "Other"
+    },
+    {
+      "name": "Tamburo, Robert",
+      "type": "Other"
+    },
+    {
+      "name": "Audette, Michel",
+      "type": "Other"
+    },
+    {
+      "name": "Foskey, Mark",
+      "type": "Other"
+    },
+    {
+      "name": "Hughett, Paul",
+      "type": "Other"
+    },
+    {
+      "name": "Doria, David",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc",
+      "name": "Fillion-Robin, Jean-Christophe",
+      "orcid": "0000-0002-9688-8950",
+      "type": "Other"
+    },
+    {
+      "name": "Kindlmann, Gordon",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc",
+      "name": "Newberg, Lee",
+      "orcid": "0000-0003-4644-8874",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc",
+      "name": "Cole, David",
+      "type": "Other"
+    },
+    {
+      "name": "S. FONOV, Vladimir",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc",
+      "name": "Turner, Wes",
+      "type": "Other"
+    },
+    {
+      "name": "Chen, Sophie",
+      "type": "Other"
+    },
+    {
+      "name": "Tasdizen, Tolga",
+      "type": "Other"
+    },
+    {
+      "name": "Duda, Jeffrey",
+      "type": "Other"
+    },
+    {
+      "name": "Galeotti, John",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc",
+      "name": "BARRE, Sebastien",
+      "type": "Other"
+    },
+    {
+      "name": "Jaume, Sylvain",
+      "type": "Other"
+    },
+    {
+      "name": "Mosaliganti, Kishore",
+      "type": "Other"
+    },
+    {
+      "name": "Isakov, Mihail",
+      "type": "Other"
+    },
+    {
+      "name": "Chandra, Parag",
+      "type": "Other"
+    },
+    {
+      "name": "Ghayoor, Ali",
+      "type": "Other"
+    },
+    {
+      "name": "Mackelfresh, Andrew",
+      "type": "Other"
+    },
+    {
+      "name": "Mullins, Christopher",
+      "type": "Other"
+    },
+    {
+      "name": "Zhuge, Ying",
+      "type": "Other"
+    },
+    {
+      "affiliation": "University of Lyon, CREATIS",
+      "name": "Rit, Simon",
+      "orcid": "0000-0003-2530-1013",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Tufts University School of Medicine",
+      "name": "Vigneault, Davis",
+      "orcid": "0000-0003-3798-9812",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc",
+      "name": "Martin, Ken",
+      "type": "Other"
+    },
+    {
+      "name": "Xue, Xinwei",
+      "type": "Other"
+    },
+    {
+      "name": "Straing, Marius",
+      "type": "Other"
+    },
+    {
+      "name": "Estepar, Raul",
+      "type": "Other"
+    },
+    {
+      "name": "Squillacote, Amy",
+      "type": "Other"
+    },
+    {
+      "name": "Wyman, Brad",
+      "type": "Other"
+    },
+    {
+      "name": "Chang, Wilson",
+      "type": "Other"
+    },
+    {
+      "name": "Guyon, Jean-Philippe",
+      "type": "Other"
+    },
+    {
+      "name": "Botha, Charl",
+      "type": "Other"
+    },
+    {
+      "name": "Baghdadi, Leila",
+      "type": "Other"
+    },
+    {
+      "name": "maekclena",
+      "type": "Other"
+    },
+    {
+      "name": "P. Awate, Suyash",
+      "type": "Other"
+    },
+    {
+      "name": "Reynolds, Patrick",
+      "type": "Other"
+    },
+    {
+      "name": "Pincus, Zachary",
+      "type": "Other"
+    },
+    {
+      "name": "Finet, Julien",
+      "type": "Other"
+    },
+    {
+      "name": "Venkatram, Raghu",
+      "type": "Other"
+    },
+    {
+      "name": "Yaniv, Ziv",
+      "orcid": "0000-0003-0315-7727",
+      "type": "Other"
+    },
+    {
+      "name": "Zygmunt, Kris",
+      "type": "Other"
+    },
+    {
+      "name": "Rondot, Pascale",
+      "type": "Other"
+    },
+    {
+      "name": "Davis, Brad",
+      "type": "Other"
+    },
+    {
+      "name": "Antiga, Luca",
+      "type": "Other"
+    },
+    {
+      "name": "Coursolle, Mathieu",
+      "type": "Other"
+    },
+    {
+      "name": "Roden, Mark",
+      "type": "Other"
+    },
+    {
+      "name": "Park, Sangwook",
+      "type": "Other"
+    },
+    {
+      "name": "Cheung, Ho",
+      "type": "Other"
+    },
+    {
+      "name": "Greer, Hastings",
+      "type": "Other"
+    },
+    {
+      "name": "Gandel, Lucas",
+      "type": "Other"
+    },
+    {
+      "name": "Aaron Cois, C.",
+      "type": "Other"
+    },
+    {
+      "name": "Kaucic, Robert",
+      "type": "Other"
+    },
+    {
+      "name": "D. Hanwell, Marcus",
+      "type": "Other"
+    },
+    {
+      "name": "Magnotta, Vincent",
+      "type": "Other"
+    },
+    {
+      "name": "Bertel, François",
+      "type": "Other"
+    },
+    {
+      "name": "Hipwell, John",
+      "type": "Other"
+    },
+    {
+      "name": "Chandrashekara, Raghavendra",
+      "type": "Other"
+    },
+    {
+      "name": "Beare, Richard",
+      "type": "Other"
+    },
+    {
+      "affiliation": "Kitware Inc",
+      "name": "Gerber, Samuel",
+      "type": "Other"
+    },
+    {
+      "name": "C. Bigler, Don",
+      "type": "Other"
+    },
+    {
+      "name": "Styner, Martin",
+      "type": "Other"
+    },
+    {
+      "name": "Robbins, Steven",
+      "type": "Other"
+    },
+    {
+      "name": "Chalana, Vikram",
+      "type": "Other"
+    },
+    {
+      "name": "Le Poul, Yann",
+      "type": "Other"
+    },
+    {
+      "name": "Neundorf, Alexander",
+      "type": "Other"
+    },
+    {
+      "name": "Lamb, Peter",
+      "type": "Other"
+    },
+    {
+      "name": "Williamson, Zach",
+      "type": "Other"
+    },
+    {
+      "name": "Braun-Jones, Taylor",
+      "type": "Other"
+    },
+    {
+      "name": "Wasem, Andrew",
+      "type": "Other"
+    },
+    {
+      "name": "Rannou, Nicolas",
+      "type": "Other"
+    },
+    {
+      "name": "ITK Community Members",
+      "type": "Other"
+    }
+  ],
+  "title": "Kartikay Imaging Toolkit",
+  "description": "Independently branded distribution led and maintained by Kartikay Srivastava, derived from ITK. Upstream and third-party development is credited in CONTRIBUTORS.md. Metadata modified on 2026-11-08."
+}

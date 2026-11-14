@@ -1,0 +1,37 @@
+name: Verify slice workbench
+on:
+  push:
+    paths: ['Applications/Workbench/**', '.github/workflows/workbench.yml']
+  pull_request:
+    paths: ['Applications/Workbench/**', '.github/workflows/workbench.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  container-and-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: Applications/Workbench
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build production container
+        run: docker build -t slice-workbench .
+      - name: Start and check readiness
+        run: |
+          docker run -d --name workbench -p 127.0.0.1:8080:8080 slice-workbench
+          curl -fsS --retry 12 --retry-connrefused --retry-delay 1 http://127.0.0.1:8080/api/health
+      - name: Test native processor inside container
+        run: |
+          docker exec -i workbench python - /app/build/kit_processor < tests/test_processor.py
+      - name: Install browser test tools
+        run: |
+          python3 -m venv "$RUNNER_TEMP/browser"
+          "$RUNNER_TEMP/browser/bin/pip" install playwright==1.55.0
+          "$RUNNER_TEMP/browser/bin/playwright" install --with-deps chromium
+      - name: Verify import, processing and export in Chromium
+        run: '"$RUNNER_TEMP/browser/bin/python" tests/browser_smoke.py'
+      - name: Collect server logs
+        if: failure()
+        run: docker logs workbench

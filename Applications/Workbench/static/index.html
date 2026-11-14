@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Slice Workbench · Kartikay Imaging Toolkit</title><link rel="stylesheet" href="style.css"><script defer src="app.js"></script></head>
+<body><header><span class="mark">Ki</span><strong>Kartikay Imaging Toolkit</strong><a href="https://github.com/KartikaySr/Kartikay-Imaging-Toolkit">Source ↗</a></header>
+<main><div class="intro"><div><h1>Slice workbench</h1><p>Compare grayscale images and export processed slices.</p></div><button id="import">Import image</button><input hidden type="file" id="file" accept="image/png,image/jpeg"></div>
+<section class="workspace"><article><div class="bar"><h2>Source</h2><span id="filename"></span></div><div class="viewer"><canvas id="source" aria-label="Grayscale input image"></canvas></div></article>
+<article><div class="bar"><h2>Result</h2><span id="resultName">Awaiting run</span></div><div class="viewer"><canvas id="result" hidden aria-label="Processed grayscale result"></canvas><p id="empty">Run a filter to compare.</p></div></article></section>
+<form id="controls"><label>Operation<select id="operation"><option value="threshold">Threshold mask</option><option value="region">Seeded region growing</option><option value="noise">Gaussian noise</option><option value="smooth">Box smoothing</option></select></label>
+<label><span id="param"></span><input id="amount" type="range" min="0"><output id="value" for="amount"></output></label>
+<div id="seed" hidden><label>Seed X<input id="x" type="number" min="0" required></label><label>Seed Y<input id="y" type="number" min="0" required></label></div>
+<button class="primary" id="run">Run filter →</button><button type="button" id="export" disabled>Export PNG</button></form>
+<div class="status"><span id="status" role="status"></span><button id="sample">Load sample</button></div>
+<p class="note">Use a sample or a de-identified PNG or JPEG. Running a filter sends grayscale pixels to the processing server.</p></main>
+<footer>Kartikay Srivastava · Research workbench</footer></body></html>

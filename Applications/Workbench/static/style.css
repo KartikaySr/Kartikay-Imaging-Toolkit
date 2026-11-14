@@ -1,0 +1,43 @@
+:root { color-scheme:light; font:16px/1.45 Inter,system-ui,sans-serif; color:#193431; background:#f4f6f1}
+* { box-sizing:border-box}
+body { margin:0}
+header,main,footer { padding-inline:clamp(18px,5vw,88px)}
+header { height:68px; border-bottom:1px solid #cfd9d1; display:flex; align-items:center; gap:12px; background:#fbfcf8}
+header a { margin-left:auto; color:inherit}
+.mark { background:#173f38; color:#c6f58a; padding:5px 9px; border-radius:6px; font-weight:800}
+main { max-width:1600px; margin:auto}
+.intro,.bar,.status,form,#seed { display:flex; align-items:center; gap:12px}
+.intro { justify-content:space-between; margin:34px 0 24px}
+h1 { font:500 clamp(32px,5vw,58px)/1.05 Georgia,serif; letter-spacing:-.04em; margin:0}
+.intro p,.note { color:#52645d; margin:10px 0}
+.workspace { display:grid; grid-template-columns:1fr 1fr; gap:12px}
+article { min-width:0; background:#132420; border-radius:12px; overflow:hidden; color:#d6e5da}
+.bar { padding:12px 16px; border-bottom:1px solid #394940; justify-content:space-between}
+.bar span { font:12px monospace; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+h2 { font-size:14px; margin:0}
+.viewer { height:clamp(240px,36vh,460px); display:grid; place-items:center; background:radial-gradient(ellipse at center,#243831,#111d1a); padding:12px}
+.viewer canvas { max-height:100%; max-width:100%; object-fit:contain; min-height:0}
+.viewer p { color:#b8c6bc}
+form { margin-top:14px; flex-wrap:wrap; border:1px solid #cad6ca; background:#fff; padding:18px; border-radius:12px; align-items:end}
+label { display:grid; gap:5px; font-size:13px; font-weight:600}
+label:has(input[type=range]) { grid-template-columns:auto auto}
+input[type=range] { grid-column:1; accent-color:#235a4b}
+output { grid-column:2; grid-row:2; font:14px monospace}
+button,select,input[type=number] { font:inherit; border:1px solid #adbcaf; border-radius:6px; padding:8px 12px; background:#fff; color:inherit}
+button { cursor:pointer; font-weight:600}
+button:hover:enabled { border-color:#183d33}
+button:disabled { opacity:.45; cursor:default}
+.primary { background:#154539; color:white; border-color:#154539; margin-left:auto}
+#seed input { width:74px}
+.status { justify-content:space-between; margin-top:16px; font-size:14px}
+.status button { border:0; background:transparent; text-decoration:underline}
+.note,footer { font-size:12px}
+footer { border-top:1px solid #cfd9d1; margin-top:30px; padding-block:15px; color:#52645d}
+[hidden] { display:none!important}
+:focus-visible { outline:3px solid #307863; outline-offset:3px}
+@media(max-width:660px) { .workspace { grid-template-columns:1fr}
+.viewer { height:210px}
+.intro { align-items:start}
+form { align-items:start}
+.primary { margin-left:0}
+}

@@ -12,6 +12,10 @@ This is Kartikay Srivastava's independently branded distribution, derived from
 ITK. Original development and third-party contributions are credited in
 [CONTRIBUTORS.md](CONTRIBUTORS.md).
 
+## Browser workbench
+
+Import a 2D image, compare native C++ filters, and export the result as PNG. [Run the slice workbench](Applications/Workbench/README.md).
+
 ## Build from this source
 
 Requires CMake 3.22.1 or newer and a C++17 compiler.

@@ -15,13 +15,13 @@ jobs:
       run:
         working-directory: Applications/Workbench
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Build production container
         run: docker build -t slice-workbench .
       - name: Start and check readiness
         run: |
           docker run -d --name workbench -p 127.0.0.1:8080:8080 slice-workbench
-          curl -fsS --retry 12 --retry-connrefused --retry-delay 1 http://127.0.0.1:8080/api/health
+          curl -fsS --retry 12 --retry-all-errors --retry-delay 1 http://127.0.0.1:8080/api/health
       - name: Test native processor inside container
         run: |
           docker exec -i workbench python - /app/build/kit_processor < tests/test_processor.py

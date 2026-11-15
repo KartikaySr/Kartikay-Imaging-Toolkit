@@ -1,43 +1,51 @@
-:root { color-scheme:light; font:16px/1.45 Inter,system-ui,sans-serif; color:#193431; background:#f4f6f1}
-* { box-sizing:border-box}
-body { margin:0}
-header,main,footer { padding-inline:clamp(18px,5vw,88px)}
-header { height:68px; border-bottom:1px solid #cfd9d1; display:flex; align-items:center; gap:12px; background:#fbfcf8}
-header a { margin-left:auto; color:inherit}
-.mark { background:#173f38; color:#c6f58a; padding:5px 9px; border-radius:6px; font-weight:800}
-main { max-width:1600px; margin:auto}
-.intro,.bar,.status,form,#seed { display:flex; align-items:center; gap:12px}
-.intro { justify-content:space-between; margin:34px 0 24px}
-h1 { font:500 clamp(32px,5vw,58px)/1.05 Georgia,serif; letter-spacing:-.04em; margin:0}
-.intro p,.note { color:#52645d; margin:10px 0}
-.workspace { display:grid; grid-template-columns:1fr 1fr; gap:12px}
-article { min-width:0; background:#132420; border-radius:12px; overflow:hidden; color:#d6e5da}
-.bar { padding:12px 16px; border-bottom:1px solid #394940; justify-content:space-between}
-.bar span { font:12px monospace; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
-h2 { font-size:14px; margin:0}
-.viewer { height:clamp(240px,36vh,460px); display:grid; place-items:center; background:radial-gradient(ellipse at center,#243831,#111d1a); padding:12px}
-.viewer canvas { max-height:100%; max-width:100%; object-fit:contain; min-height:0}
-.viewer p { color:#b8c6bc}
-form { margin-top:14px; flex-wrap:wrap; border:1px solid #cad6ca; background:#fff; padding:18px; border-radius:12px; align-items:end}
-label { display:grid; gap:5px; font-size:13px; font-weight:600}
-label:has(input[type=range]) { grid-template-columns:auto auto}
-input[type=range] { grid-column:1; accent-color:#235a4b}
-output { grid-column:2; grid-row:2; font:14px monospace}
-button,select,input[type=number] { font:inherit; border:1px solid #adbcaf; border-radius:6px; padding:8px 12px; background:#fff; color:inherit}
-button { cursor:pointer; font-weight:600}
-button:hover:enabled { border-color:#183d33}
-button:disabled { opacity:.45; cursor:default}
-.primary { background:#154539; color:white; border-color:#154539; margin-left:auto}
-#seed input { width:74px}
-.status { justify-content:space-between; margin-top:16px; font-size:14px}
-.status button { border:0; background:transparent; text-decoration:underline}
-.note,footer { font-size:12px}
-footer { border-top:1px solid #cfd9d1; margin-top:30px; padding-block:15px; color:#52645d}
-[hidden] { display:none!important}
-:focus-visible { outline:3px solid #307863; outline-offset:3px}
-@media(max-width:660px) { .workspace { grid-template-columns:1fr}
-.viewer { height:210px}
-.intro { align-items:start}
-form { align-items:start}
-.primary { margin-left:0}
-}
+:root {font:16px/1.5 Inter,system-ui,sans-serif;color:#16352e;background:#f5f6ef;color-scheme:light}
+* {box-sizing:border-box}
+body {margin:0}
+header,main,footer {padding-inline:clamp(16px,4vw,72px)}
+header,.actions,.intro,.bar,.status,.parameter,#seed {display:flex;align-items:center;gap:12px}
+header {height:64px;border-bottom:1px solid #ced7cd;background:#fff}
+header a {margin-left:auto;color:inherit}
+.mark {background:#153f37;color:#ccf692;padding:5px 9px;border-radius:7px;font-weight:800}
+main {max-width:1680px;margin:auto}
+.intro {justify-content:space-between;margin:clamp(24px,4vw,64px) 0 26px;flex-wrap:wrap}
+h1 {font:500 clamp(38px,5vw,68px)/1 Georgia,serif;letter-spacing:-.045em;margin:0}
+.intro p,#hint,details p {color:#52645d;margin:.65em 0}
+.layout {display:grid;grid-template-columns:minmax(190px,250px) minmax(0,1fr);gap:18px;align-items:start}
+.workspace {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+article {background:#11211e;border-radius:12px;overflow:hidden;color:#edf4ef;min-width:0}
+.bar,.caption {padding:12px 16px}
+.bar {justify-content:space-between;border-bottom:1px solid #35463e}
+.bar span,.caption {font:12px/1.5 ui-monospace,monospace;color:#c4d2c9}
+.bar span {overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.caption {border-top:1px solid #35463e}
+h2 {font-size:16px;margin:0}
+.viewer {height:clamp(240px,34vw,420px);display:flex;align-items:center;justify-content:center;padding:12px;background:radial-gradient(ellipse,#263a32,#101e1a)}
+.viewer canvas {max-width:100%;max-height:100%;width:auto;height:auto}
+.viewer p {color:#d4dfd6;text-align:center}
+.pick {cursor:crosshair}
+.drag {outline:3px dashed #4c8355}
+form,.status {background:#fff;border:1px solid #cfd8cd;border-radius:12px;padding:18px}
+form {display:grid;gap:9px}
+form h2 {margin-bottom:9px}
+label {font-weight:600;font-size:14px}
+.parameter,.status {justify-content:space-between}
+output {font:14px ui-monospace,monospace;background:#e5efdc;padding:3px 8px;border-radius:5px}
+#hint,details,.status {font-size:14px}
+input[type=range] {width:100%;accent-color:#265b43;min-height:32px;margin:0}
+button,select,input[type=number] {font:inherit;color:inherit;border:1px solid #a7b5aa;border-radius:7px;padding:9px 12px;background:#fff;min-height:44px}
+select {width:100%}
+button,summary {cursor:pointer}
+button:hover:enabled {border-color:#193e30;background:#eef4e9}
+button:disabled {opacity:.48;cursor:default}
+button.primary,#import {background:#18523d;color:white;border-color:#18523d}
+button.primary:hover:enabled,#import:hover {background:#103d2c}
+#seed label {display:grid;min-width:0}
+#seed input {width:100%}
+details {border-top:1px solid #dbe2da;padding-top:12px;margin-top:6px}
+.status {margin-top:12px;gap:10px}
+.status button {white-space:nowrap}
+footer {margin-top:40px;padding-block:18px;border-top:1px solid #cfd9d1;font-size:13px}
+[hidden] {display:none!important}
+:focus-visible {outline:3px solid #559645;outline-offset:3px}
+@media(max-width:900px){.layout {grid-template-columns:1fr}form {grid-template-columns:repeat(2,minmax(0,1fr));align-items:center}form h2,#hint,details {grid-column:1/-1}}
+@media(max-width:600px){.workspace {grid-template-columns:1fr}.viewer {height:230px}.status {flex-wrap:wrap}.intro {margin-top:25px}form {display:grid;grid-template-columns:1fr}header {gap:8px;font-size:14px}}

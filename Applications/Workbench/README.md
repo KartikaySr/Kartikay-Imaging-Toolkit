@@ -1,6 +1,6 @@
 # Slice workbench
 
-Kartikay Imaging Toolkit's browser interface for 2D research images. Start with the synthetic phantom or import a PNG or JPEG. The browser converts the image to 8-bit grayscale and fits it within 1024 × 1024 pixels. Choose a filter, compare the source and output, then export the result as PNG.
+Kartikay Imaging Toolkit's browser interface for 2D research images. The workbench opens with a synthetic phantom and its threshold mask. Import or drop a PNG or JPEG to use your own image. For region growing, click a seed pixel or enter its coordinates. The result shows the percentage of selected pixels for both mask filters. The browser converts the image to 8-bit grayscale and fits it within 1024 × 1024 pixels. Choose a filter, compare the source and output, then export the result as PNG.
 
 The standalone C++17 processor implements threshold masking, four-connected region growing from an (x, y) seed, Gaussian noise with a fixed seed, and box smoothing. The web service processes the grayscale buffer in memory. The native ITK library provides the wider project's volume-processing APIs.
 

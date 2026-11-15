@@ -10,8 +10,14 @@ with sync_playwright() as playwright, tempfile.TemporaryDirectory() as directory
     browser = playwright.chromium.launch()
     page = browser.new_page()
     page.goto(os.environ.get("WORKBENCH_URL", "http://127.0.0.1:8080"))
+    expect(page.locator("#result")).to_be_visible()
+    expect(page.locator("#resultInfo")).to_contain_text("% of pixels selected")
     for operation in ("threshold", "region", "noise", "smooth"):
         page.locator("#operation").select_option(operation)
+        if operation == "region":
+            page.locator("#source").click(position={"x": 12, "y": 12})
+            assert int(page.locator("#x").input_value()) < 50
+            page.get_by_role("spinbutton", name="Seed X").fill("160")
         page.get_by_role("button", name="Run filter").click()
         expect(page.get_by_role("status").filter(has_text="pixels processed")).to_be_visible()
         expect(page.locator("#result")).to_be_visible()

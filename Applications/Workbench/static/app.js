@@ -6,6 +6,12 @@ const settings = {
   noise: ["Standard deviation", 100, 20],
   smooth: ["Radius (pixels)", 8, 2]
 };
+const hints = {
+  threshold: "Pixels at or above the minimum turn white. Lower intensities turn black.",
+  region: "Pick a pixel in the source or enter its coordinates. Increase tolerance to include more neighboring intensities.",
+  noise: "Increase the standard deviation to add stronger Gaussian noise.",
+  smooth: "Increase the radius to average a wider neighborhood around each pixel."
+};
 let pixels, revision = 0, loading = 0, filename = "";
 function draw(canvas, width, height, data) {
   canvas.width = width;
@@ -24,17 +30,20 @@ function invalidate() {
   el("export").disabled = true;
   el("run").disabled = false;
   el("resultName").textContent = "Awaiting run";
-  el("status").textContent = "Ready to process.";
+  el("status").textContent = "Ready. Run the filter to update the result.";
+  el("resultInfo").textContent = "Processed image";
 }
 function load(name, width, height, data) {
   pixels = data;
   filename = name;
-  draw(source, width, height, data);
+  source.width = width;
+  source.height = height;
   el("filename").textContent = name + " · " + width + " × " + height;
   for (const [id, size] of [["x", width], ["y", height]]) {
     el(id).max = size - 1;
     el(id).value = Math.floor(size / 2);
   }
+  showSeed();
   invalidate();
 }
 function sample() {
@@ -51,22 +60,52 @@ function sample() {
   }
   load("Synthetic phantom", size, size, data);
 }
+function showSeed() {
+  if (!pixels) return;
+  draw(source, source.width, source.height, pixels);
+  if (el("seed").hidden || !el("x").validity.valid || !el("y").validity.valid) return;
+  const ctx = source.getContext("2d");
+  const radius = Math.max(4, source.width / 55);
+  ctx.beginPath();
+  ctx.arc(el("x").valueAsNumber + .5, el("y").valueAsNumber + .5, radius, 0, 2*Math.PI);
+  ctx.strokeStyle = "#152522";
+  ctx.lineWidth = radius / 2;
+  ctx.stroke();
+  ctx.strokeStyle = "#c4ff82";
+  ctx.lineWidth = radius / 4;
+  ctx.stroke();
+}
+source.onclick = event => {
+  if (el("seed").hidden) return;
+  const box = source.getBoundingClientRect();
+  el("x").value = Math.min(source.width-1, Math.floor((event.clientX-box.left)*source.width/box.width));
+  el("y").value = Math.min(source.height-1, Math.floor((event.clientY-box.top)*source.height/box.height));
+  showSeed();
+  invalidate();
+};
 function configure() {
   const [label, max, value] = settings[el("operation").value];
   el("param").textContent = label;
   el("amount").max = max;
   el("amount").value = el("value").value = value;
   el("seed").hidden = el("operation").value !== "region";
+  el("hint").textContent = hints[el("operation").value];
+  source.classList.toggle("pick", !el("seed").hidden);
+  el("sourceHint").textContent = el("seed").hidden ? "Drop an image here to replace the source" : "Click or tap the source to choose a seed";
+  showSeed();
   for (const id of ["x", "y"]) el(id).disabled = el("seed").hidden;
   invalidate();
 }
 el("operation").onchange = configure;
-el("controls").oninput = () => { el("value").value = el("amount").value; invalidate(); };
+el("controls").oninput = event => { if (["x","y"].includes(event.target.id)) showSeed(); el("value").value = el("amount").value; invalidate(); };
 el("sample").onclick = sample;
 el("import").onclick = () => el("file").click();
 el("file").onchange = async event => {
   const file = event.target.files[0];
   event.target.value = "";
+  await importFile(file);
+};
+async function importFile(file) {
   if (!file) return;
   const id = ++loading;
   try {
@@ -88,6 +127,14 @@ el("file").onchange = async event => {
       load(file.name, canvas.width, canvas.height, gray);
     } finally { bitmap.close(); }
   } catch (error) { if (id === loading) el("status").textContent = "Import failed. " + error.message; }
+}
+const drop = el("drop");
+drop.ondragover = event => { event.preventDefault(); drop.classList.add("drag"); };
+drop.ondragleave = () => drop.classList.remove("drag");
+drop.ondrop = event => {
+  event.preventDefault();
+  drop.classList.remove("drag");
+  importFile(event.dataTransfer.files[0]);
 };
 el("controls").onsubmit = async event => {
   event.preventDefault();
@@ -108,6 +155,12 @@ el("controls").onsubmit = async event => {
     el("empty").hidden = true;
     el("export").disabled = false;
     el("resultName").textContent = el("operation").selectedOptions[0].textContent;
+    if (["region", "threshold"].includes(el("operation").value)) {
+      const selected = output.reduce((count, pixel) => count + (pixel === 255), 0);
+      el("resultInfo").textContent = (100 * selected / output.length).toFixed(1) + "% of pixels selected";
+    } else {
+      el("resultInfo").textContent = source.width + " × " + source.height + " · Grayscale";
+    }
     el("status").textContent = "Complete · " + output.length.toLocaleString() + " pixels processed.";
   } catch (error) { if (id === revision) el("status").textContent = "Processing failed. " + error.message; }
   finally { if (id === revision) el("run").disabled = false; }
@@ -120,3 +173,4 @@ el("export").onclick = () => {
 };
 configure();
 sample();
+el("controls").requestSubmit();

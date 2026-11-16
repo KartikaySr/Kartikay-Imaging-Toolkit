@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <charconv>
 #include <cmath>
+#include <cstdio>
 #include <iostream>
 #include <random>
 #include <stdexcept>
@@ -24,6 +25,12 @@ int main(int argc, char ** argv)
 {
   try
   {
+#ifdef __EMSCRIPTEN__
+    if (!std::freopen("/input.raw", "rb", stdin) || !std::freopen("/output.raw", "wb", stdout))
+    {
+      throw std::runtime_error("Could not open in-memory image buffers");
+    }
+#endif
     if (argc != 7) { throw std::invalid_argument("Expected operation, width, height, amount, seedX, seedY"); }
     const std::string operation(argv[1]);
     const int width = Parse(argv[2]), height = Parse(argv[3]), amount = Parse(argv[4]);
@@ -101,6 +108,7 @@ int main(int argc, char ** argv)
     }
     else { throw std::invalid_argument("Unknown operation"); }
     std::cout.write(reinterpret_cast<const char *>(output.data()), count);
+    std::cout.flush();
     return std::cout ? 0 : 1;
   }
   catch (const std::exception & error)

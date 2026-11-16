@@ -35,3 +35,34 @@ jobs:
       - name: Collect server logs
         if: failure()
         run: docker logs workbench
+      - name: Build the browser-local C++ processor
+        run: |
+          mkdir -p "$RUNNER_TEMP/site"
+          cp static/* "$RUNNER_TEMP/site/"
+          docker run --rm -v "$PWD:/src:ro" -v "$RUNNER_TEMP/site:/out" emscripten/emsdk:3.1.74 em++ /src/processor.cxx -std=c++17 -O2 -fexceptions -sMODULARIZE -sEXPORT_ES6 -sENVIRONMENT=web -sINVOKE_RUN=0 -sALLOW_MEMORY_GROWTH -sFORCE_FILESYSTEM "-sEXPORTED_RUNTIME_METHODS=['FS','callMain']" -o /out/processor.mjs
+          sed -i 's/<html lang="en">/<html lang="en" data-engine="wasm">/;s/Running a filter sends these pixels to the processing server./All filters run in your browser. Image pixels stay on your device./' "$RUNNER_TEMP/site/index.html"
+          cp ../../LICENSE ../../NOTICE "$RUNNER_TEMP/site/"
+      - name: Verify the static deployment
+        run: |
+          python3 -m http.server 8081 --bind 127.0.0.1 --directory "$RUNNER_TEMP/site" &
+          curl -fsS --retry 8 --retry-all-errors --retry-delay 1 http://127.0.0.1:8081/ >/dev/null
+          WORKBENCH_URL=http://127.0.0.1:8081 "$RUNNER_TEMP/browser/bin/python" tests/browser_smoke.py
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          path: ${{ runner.temp }}/site
+
+  publish:
+    needs: container-and-browser
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Publish verified site
+        id: deploy
+        uses: actions/deploy-pages@v4

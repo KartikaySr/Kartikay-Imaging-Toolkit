@@ -136,6 +136,21 @@ drop.ondrop = event => {
   drop.classList.remove("drag");
   importFile(event.dataTransfer.files[0]);
 };
+async function processImage(params, input) {
+  if (document.documentElement.dataset.engine === "wasm") {
+    const {default: createProcessor} = await import("./processor.mjs");
+    const engine = await createProcessor();
+    engine.FS.writeFile("/input.raw", input);
+    const code = engine.callMain([...params.values()]);
+    if (code) throw Error("The imaging engine could not complete this operation.");
+    return engine.FS.readFile("/output.raw");
+  }
+  const response = await fetch("/api/process?" + params, {
+    method: "POST", headers: {"Content-Type": "application/octet-stream"}, body: input
+  });
+  if (!response.ok) throw Error((await response.json()).error);
+  return new Uint8Array(await response.arrayBuffer());
+}
 el("controls").onsubmit = async event => {
   event.preventDefault();
   invalidate();
@@ -145,9 +160,7 @@ el("controls").onsubmit = async event => {
   const params = new URLSearchParams({operation:el("operation").value, width:source.width, height:source.height,
     amount:el("amount").value, x:el("seed").hidden ? 0 : el("x").value, y:el("seed").hidden ? 0 : el("y").value});
   try {
-    const response = await fetch("/api/process?" + params, {method:"POST",headers:{"Content-Type":"application/octet-stream"},body:pixels});
-    if (!response.ok) throw Error((await response.json()).error);
-    const output = new Uint8Array(await response.arrayBuffer());
+    const output = await processImage(params, pixels);
     if (id !== revision) return;
     if (output.length !== pixels.length) throw Error("Incomplete image received.");
     draw(result, source.width, source.height, output);
